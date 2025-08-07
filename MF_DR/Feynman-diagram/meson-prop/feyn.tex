@@ -1,0 +1,523 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper]{article}
+\usepackage{type1cm}
+\usepackage{amsmath}
+\usepackage{rawfonts}
+\usepackage{feynmp}
+\usepackage{color}
+\usepackage{xcolor}
+\setlength{\unitlength}{1mm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\magnification}{1}
+\newlength{\logoheight}
+\newlength{\logowidth}
+\newcounter{logo}
+\setcounter{logo}{1}
+\newwrite\dvipscmds
+\newcommand{\shiplogo}[2]{%
+  \setbox0\hbox{#1}%
+  \logowidth=\wd0%
+  \logoheight=\ht0%
+  \multiply\logoheight by \magnification%
+  \multiply\logowidth by \magnification%
+  \edef\dvipscmd{dvips -E -p=\the\value{logo} -n1 %
+     -O -1in,-1in -T \the\logowidth,\the\logoheight\space %
+     -o #2.eps \jobname}%
+  \immediate\write\dvipscmds{\dvipscmd}%
+  \shipout\box0%
+  \stepcounter{logo}}
+\newcommand{\logoframe}[5]{%
+  \leavevmode
+  \hbox{\vbox{\vskip#2\par\hbox{\hskip#1#5\hskip#3}\par\vskip#4}}}
+\newenvironment{logos}[1]%
+  {\ignorespaces\immediate\openout\dvipscmds=#1.sh}%
+  {\immediate\closeout\dvipscmds}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%~~~~~~~~~~~~~~~~~~~~ Custom Commands ~~~~~~~~~~~~~
+%##### units#
+\newcommand{\eV}[0]{\ensuremath{~\mathrm{eV} }}
+\newcommand{\keV}[0]{\ensuremath{~\mathrm{keV} }}
+\newcommand{\MeV}[0]{\ensuremath{~\mathrm{MeV} }}
+\newcommand{\GeV}[0]{\ensuremath{~\mathrm{GeV} }}
+\newcommand{\TeV}[0]{\ensuremath{~\mathrm{TeV} }}
+\newcommand{\nb}[0]{\ensuremath{~\mathrm{nb} }}
+\newcommand{\pb}[0]{\ensuremath{~\mathrm{pb} }}
+\newcommand{\fb}[0]{\ensuremath{~\mathrm{fb} }}
+
+%##### Order \fmfpen{thin}
+\newcommand{\order}[1]{\ensuremath{ \mathcal{O}( #1 ) }}
+
+\newcommand{\setfmfoptions}[0]{\fmfset{curly_len}{2mm}\fmfset{wiggly_len}{3mm}\fmfset{arrow_len}{3mm} \fmfset{dash_len}{2mm}\fmfpen{thin}}
+\newcommand{\equref}[1]{\ref{#1}}
+\newcommand{\secref}[1]{\ref{#1}}
+\newcommand{\tabref}[1]{\ref{#1}}
+\newcommand{\figref}[1]{\ref{#1}}
+\newcommand{\im}{\mathrm{i}}
+\renewcommand{\emph}[1]{#1}
+
+\newcommand{\qw}{q_{W}}
+\newcommand{\muW}{\mu_{W}}
+\newcommand{\alphas}{\alpha_{s}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\intd}{\mathrm{d}}
+\newcommand{\klam}[1]{\left(#1\right)}
+\newcommand{\sh}{\hat{s}}
+\newcommand{\md}{\mathrm{d}}
+\newcommand{\bol}[1]{\boldsymbol{#1}}
+\newcommand{\mr}[1]{\mathrm{#1}}
+\newcommand{\OS}{\mathrm{OS}}	
+
+% shorthands for greek letters
+\def\al{\alpha}
+\def\be{\beta}
+\def\ga{\gamma}
+\def\de{\delta}
+\def\veps{\varepsilon}
+\def\la{\lambda}
+\def\si{\sigma}
+\def\Ga{\Gamma}
+\def\De{\Delta}
+\def\La{\Lambda}
+
+%physical particles
+\def\mathswitchr#1{\relax\ifmmode{\mathrm{#1}}\else$\mathrm{#1}$\fi}
+\newcommand{\PB}{\mathswitchr B}
+\newcommand{\PS}{\mathswitchr S}
+\newcommand{\PV}{\mathswitchr V}
+\newcommand{\PW}{\mathswitchr W}
+\newcommand{\PZ}{\mathswitchr Z}
+\newcommand{\PA}{\mathswitchr A}
+\newcommand{\Pg}{\mathswitchr g}
+\newcommand{\PH}{\mathswitchr H}
+\newcommand{\Pe}{\mathswitchr e}
+\newcommand{\Pne}{\mathswitch \nu_{\mathrm{e}}}
+\newcommand{\Pane}{\mathswitch \bar\nu_{\mathrm{e}}}
+\newcommand{\Pnmu}{\mathswitch \nu_\mu}
+\newcommand{\Pd}{\mathswitchr d}
+%\newcommand{\Pf}{\mathswitchr f}
+\newcommand{\Pf}{f}
+\newcommand{\Ph}{\mathswitchr h}
+\newcommand{\Pl}{\mathswitchr l}
+\newcommand{\Pu}{\mathswitchr u}
+\newcommand{\Ps}{\mathswitchr s}
+\newcommand{\Pb}{\mathswitchr b}
+\newcommand{\Pc}{\mathswitchr c}
+\newcommand{\Pt}{\mathswitchr t}
+\newcommand{\Pq}{\mathswitchr q}
+\newcommand{\Pep}{\mathswitchr {e^+}}
+\newcommand{\Pem}{\mathswitchr {e^-}}
+\newcommand{\Pmum}{\mathswitchr {\mu^-}}
+\newcommand{\PWp}{\mathswitchr {W^+}}
+\newcommand{\PWm}{\mathswitchr {W^-}}
+\newcommand{\PWpm}{\mathswitchr {W^\pm}}
+\newcommand{\PWO}{\mathswitchr {W^0}}
+\newcommand{\PZO}{\mathswitchr {Z^0}}
+
+% particle masses
+\def\mathswitch#1{\relax\ifmmode#1\else$#1$\fi}
+\newcommand{\MB}{\mathswitch {M_\PB}}
+\newcommand{\Mf}{\mathswitch {m_\Pf}}
+\newcommand{\Ml}{\mathswitch {m_\Pl}}
+\newcommand{\Mq}{\mathswitch {m_\Pq}}
+\newcommand{\MS}{\mathswitch {M_\PS}}
+\newcommand{\MV}{\mathswitch {M_\PV}}
+\newcommand{\MW}{\mathswitch {M_\PW}}
+\newcommand{\hMW}{\mathswitch {\hat M_\PW}}
+\newcommand{\MWpm}{\mathswitch {M_\PWpm}}
+\newcommand{\MWO}{\mathswitch {M_\PWO}}
+\newcommand{\MA}{\mathswitch {\lambda}}
+\newcommand{\MZ}{\mathswitch {M_\PZ}}
+\newcommand{\MH}{\mathswitch {M_\PH}}
+\newcommand{\Me}{\mathswitch {m_\Pe}}
+\newcommand{\Mmy}{\mathswitch {m_\mu}}
+\newcommand{\Mta}{\mathswitch {m_\tau}}
+\newcommand{\Md}{\mathswitch {m_\Pd}}
+\newcommand{\Mu}{\mathswitch {m_\Pu}}
+\newcommand{\Ms}{\mathswitch {m_\Ps}}
+\newcommand{\Mc}{\mathswitch {m_\Pc}}
+\newcommand{\Mb}{\mathswitch {m_\Pb}}
+\newcommand{\Mt}{\mathswitch {m_\Pt}}
+\newcommand{\GW}{\mathswitch {\Gamma_\PW}}
+
+% shorthands for SM parameters
+\newcommand{\scrs}{\scriptscriptstyle}
+\newcommand{\sw}{\mathswitch {s_{\scrs\PW}}}
+\newcommand{\cw}{\mathswitch {c_{\scrs\PW}}}
+\newcommand{\thw}{\mathswitch {\theta_{\scrs\PW}}}
+%\newcommand{\sw}{\mathswitch {s_\PW}}
+%\newcommand{\cw}{\mathswitch {c_\PW}}
+%\newcommand{\thw}{\mathswitch {\theta_{\PW}}}
+%\newcommand{\swbar}{\mathswitch {\bar s_\PW}}
+\newcommand{\swbar}{\mathswitch {\bar s_{\scrs\PW}}}
+\newcommand{\swfbar}{\mathswitch {\bar s_{\PW,\Pf}}}
+\newcommand{\swqbar}{\mathswitch {\bar s_{\PW,\Pq}}}
+\newcommand{\Qf}{\mathswitch {Q_\Pf}}
+\newcommand{\Ql}{\mathswitch {Q_\Pl}}
+\newcommand{\Qq}{\mathswitch {Q_\Pq}}
+\newcommand{\vf}{\mathswitch {v_\Pf}}
+\newcommand{\af}{\mathswitch {a_\Pf}}
+\newcommand{\gesi}{\mathswitch {g_\Pe}^{\sigma}}
+\newcommand{\gem}{\mathswitch {g_\Pe}^-}
+\newcommand{\gep}{\mathswitch {g_\Pe}^+}
+\newcommand{\GF}{\mathswitch {G_\mu}}
+
+\newcommand{\QCD}{{\mathrm{QCD}}}
+\newcommand{\QED}{{\mathrm{QED}}}
+\newcommand{\LEP}{{\mathrm{LEP}}}
+\newcommand{\SLD}{{\mathrm{SLD}}}
+\newcommand{\SM}{{\mathrm{SM}}}
+\newcommand{\born}{{\mathrm{Born}}}
+\newcommand{\nf}{{\mathrm{nf}}}
+\newcommand{\marrow}[5]{%
+    \fmfcmd{style_def marrow#1
+    expr p = drawarrow subpath (1/4, 3/4) of p shifted 6 #2 withpen pencircle scaled 0.4;
+    label.#3(btex #4 etex, point 0.5 of p shifted 6 #2);
+    enddef;}
+    \fmf{marrow#1,tension=0}{#5}}
+
+\newcommand{\cut}[2]{%
+    \fmfcmd{%
+	vardef cross_bar (expr p, len, ang) =
+	((-len/2,0)--(len/2,0))
+	rotated (ang + angle direction length(p)/2 of p)
+	shifted point length(p)/2 of p
+	enddef;
+	style_def crossed expr p =
+	draw (wiggly p);
+	ccutdraw cross_bar (p, 10mm, 90);
+	enddef;}
+    \fmf{crossed,fore=red}{#1,#2}}
+
+
+\begin{document}
+\begin{fmffile}{fmf}
+\begin{logos}{pictures}
+%
+
+%\shiplogo{%
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{plain_arrow,fore=(0.392,,0.584,,0.929)}{fullcircle scaled .7w shifted (.5w,.5h)}
+%		\fmfi{plain_arrow,fore=(0.392,,0.584,,0.929)}{fullcircle scaled .8w shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{diquark}
+
+%\shiplogo{%
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{plain_arrow,fore=(0.392,,0.584,,0.929)}{reverse fullcircle scaled .7w shifted (.5w,.5h)}
+%		\fmfi{plain_arrow,fore=(0.392,,0.584,,0.929)}{fullcircle scaled .8w shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{bilinear}
+
+%\shiplogo{%
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{dashes,fore=(0,,0,,0.8)}{fullcircle rotated 0 scaled .775w shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{bilinear_alternative}
+
+%\shiplogo{%
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{dashes,fore=(0,,0,,0)}{fullcircle rotated 0 scaled .775w shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{ghost}
+
+%\shiplogo{%
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{dots,fore=(0,,0,,0)}{fullcircle rotated 1.5 scaled .775w shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{ghost_alternative}
+
+%\shiplogo{
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{plain, fore=(0,,0,,0)}{fullcircle scaled .75w shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{quark}
+
+%\shiplogo{%
+%	\begin{fmfgraph*}(35,35)
+%		\fmfcmd{
+%			% Please let me know if there’s a more efficient way to do this
+%			path quadrant, q[], otimes;
+%			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+%			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+%			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+%		}
+%		\fmfwizard
+%		\fmftop{l1,i,r1}
+%		\fmfbottom{l2,o,r2}
+%		\fmf{phantom,tension=5}{i,v1}
+%		\fmf{phantom,tension=5}{v2,o}
+%		\fmf{phantom,left,tension=0.4}{v1,v2,v1}
+%		\fmfi{gluon, fore=(0.933,,0.463,,0)}{fullcircle scaled .75w rotated 90 shifted (.5w,.5h)}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+%	\end{fmfgraph*}
+%}{gluon}
+
+
+\shiplogo{%
+%	\begin{fmfgraph*}(50,40)
+	\begin{fmfgraph*}(50,30)
+		\fmfcmd{
+			% Please let me know if there’s a more efficient way to do this
+			path quadrant, q[], otimes;
+			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+		}
+		\fmfwizard
+                
+%             \fmfset{dash_len}{2mm}
+	        \fmfpen{thick}
+        		\fmfleft{i}
+        		\fmfright{o}
+		
+%		\fmfv{label=$a_1\mu_1$,l.a=-60,l.d=0.1w}{i}
+%		\fmfv{label=$a_2\mu_2$,l.a=-120,l.d=0.1w}{o}
+		
+		\fmf{double,foreground=(0,,0.1,,1),tension=3,label.side=left}{i,v1}
+		\fmf{double,foreground=(0,,0.1,,1),tension=3}{v2,o}
+        		\fmf{quark,fore=black,left=1}{v1,v2}
+       		\fmf{quark,left=1}{v2,v1}
+		
+		\fmfv{decor.shape=circle,decor.filled=1,decor.size=3thick,b=(0.5,,0.5,,0.5)}{v1,v2}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+        \end{fmfgraph*}
+}{pi2-quark}
+
+
+
+\shiplogo{%
+%	\begin{fmfgraph*}(50,40)
+	\begin{fmfgraph*}(50,30)
+		\fmfcmd{
+			% Please let me know if there’s a more efficient way to do this
+			path quadrant, q[], otimes;
+			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+		}
+		\fmfwizard
+                
+%             \fmfset{dash_len}{2mm}
+	        \fmfpen{thick}
+        		\fmfleft{i}
+        		\fmfright{o}
+		
+%		\fmfv{label=$a_1\mu_1$,l.a=-60,l.d=0.1w}{i}
+%		\fmfv{label=$a_2\mu_2$,l.a=-120,l.d=0.1w}{o}
+		
+		\fmf{dashes,tension=3,label.side=left}{i,v1}
+		\fmf{dashes,tension=3}{v2,o}
+        		\fmf{dashes,fore=black,left=1}{v1,v2}
+       		\fmf{dashes,left=1}{v2,v1}
+		
+		\fmfv{decor.shape=circle,decor.filled=empty,decor.size=6thick,b=(0.5,,0.5,,0.5)}{v1,v2}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+        \end{fmfgraph*}
+}{pi2-meson}
+
+
+\shiplogo{%
+	\begin{fmfgraph*}(40,30)
+
+	        \fmfpen{thick}
+%        		\fmfleft{i}
+%        		\fmfright{o}
+                \fmfbottom{i,o}
+                \fmftop{t}
+		
+%		\fmfv{label=$a$,,$\mu$,l.a=-60,l.d=0.1w}{i}
+%		\fmfv{label=$b$,,$\nu$,l.a=-120,l.d=0.1w}{o}
+		
+		
+ 		\fmf{dashes,tension=1}{i,v}
+ 		\fmf{dashes,tension=1}{v,o}
+% 		\fmf{gluon,tension=1/2}{v,v}		
+%        		\fmf{gluon,right=1,tension=1/2}{v,v}
+
+                \fmffreeze  
+                
+                 \fmf{phantom,tension=5}{t,v1}
+        		\fmf{dashes,right=1}{v,v1}
+        		\fmf{dashes,right=1}{v1,v}
+
+ %        		\fmf{ghost,left=1,tension=1,label=$a_1\quad(q-p)\quad b_1$}{v1,v2}
+ %       		\fmf{gluon,fore=blue,left=1,tension=1,label=\color{red}{$a_4\mu_4\quad\longrightarrow (q-p)\quad a^{\prime}_4\mu^{\prime}_4$}}{v1,v2}
+ %       		\fmf{ghost,left=1,tension=1,label=$a_2\qquad q\qquad b_2$}{v2,v1}
+		
+		\fmfv{decor.shape=circle,decor.filled=empty,decor.size=6thick,b=(0.5,,0.5,,0.5)}{v}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+        \end{fmfgraph*}
+}{pi2-meson-tadpole}
+
+
+
+
+\shiplogo{%
+%	\begin{fmfgraph*}(50,40)
+	\begin{fmfgraph*}(40,20)
+		\fmfcmd{
+			% Please let me know if there’s a more efficient way to do this
+			path quadrant, q[], otimes;
+			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+		}
+		\fmfwizard
+                
+%             \fmfset{dash_len}{2mm}
+	        \fmfpen{thick}
+        		\fmfleft{i}
+        		\fmfright{o}
+		
+%		\fmfv{label=$a_1\mu_1$,l.a=-60,l.d=0.1w}{i}
+%		\fmfv{label=$a_2\mu_2$,l.a=-120,l.d=0.1w}{o}
+		
+%		\fmf{dashes,tension=3,label=$\longleftarrow p$,label.side=left}{i,v1}
+%		\fmf{dashes,tension=3}{v2,o}
+%        		\fmf{quark,fore=black,left=1,label=$(q-p)$}{v1,v2}
+%       		\fmf{quark,left=1,label=$q$}{v2,v1}
+                \fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{v1,i}
+                \fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{o,v1}
+
+	       \fmfv{decor.shape=circle,decor.filled=empty,decor.size=10thick,b=(0.5,,0.5,,0.5)}{v1}
+
+%                \fmfv{label=$q$,l.a=160,l.d=0.15w}{v1}
+
+%                \fmffreeze                
+%                \fmfiv{label=$c$,l.a=20,l.d=0.15w}{vloc(__v1)}
+
+
+%		\fmfdot{v1,v2}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+        \end{fmfgraph*}
+}{Gam2-meson}
+
+\shiplogo{%
+%	\begin{fmfgraph*}(50,40)
+	\begin{fmfgraph*}(40,20)
+		\fmfcmd{
+			% Please let me know if there’s a more efficient way to do this
+			path quadrant, q[], otimes;
+			quadrant = (0, 0) -- (0.5, 0) & quartercircle & (0, 0.5) -- (0, 0);
+			for i=1 upto 4: q[i] = quadrant rotated (45 + 90*i); endfor
+			otimes = q[1] & q[2] & q[3] & q[4] -- cycle;
+		}
+		\fmfwizard
+                
+%             \fmfset{dash_len}{2mm}
+	        \fmfpen{thick}
+        		\fmfleft{i}
+        		\fmfright{o}
+		
+%		\fmfv{label=$a_1\mu_1$,l.a=-60,l.d=0.1w}{i}
+%		\fmfv{label=$a_2\mu_2$,l.a=-120,l.d=0.1w}{o}
+		
+%		\fmf{dashes,tension=3,label=$\longleftarrow p$,label.side=left}{i,v1}
+%		\fmf{dashes,tension=3}{v2,o}
+%        		\fmf{quark,fore=black,left=1,label=$(q-p)$}{v1,v2}
+%       		\fmf{quark,left=1,label=$q$}{v2,v1}
+                \fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{v1,i}
+                \fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{o,v1}
+
+	       %\fmfv{decor.shape=circle,decor.filled=empty,decor.size=10thick,b=(0.5,,0.5,,0.5)}{v1}
+
+%                \fmfv{label=$q$,l.a=160,l.d=0.15w}{v1}
+
+%                \fmffreeze                
+%                \fmfiv{label=$c$,l.a=20,l.d=0.15w}{vloc(__v1)}
+
+
+%		\fmfdot{v1,v2}
+%		\fmfv{decor.shape=otimes,decor.filled=empty,decor.size=0.15w}{v1}
+        \end{fmfgraph*}
+}{Gam2-meson-bare}
+
+
+
+\end{logos}
+\end{fmffile}
+\end{document}

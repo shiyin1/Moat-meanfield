@@ -1,0 +1,195 @@
+\documentclass[%
+reprint,
+superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+amsmath,amssymb,
+aps,
+%pra,
+%prb,
+prd,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{standalone}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{bbold}
+\usepackage{braket}
+\usepackage{amssymb,amsmath}
+\usepackage[export]{adjustbox}% for the second solution
+
+
+\usepackage{color}
+%\usepackage[dvipsnames, svgnames, x11names]{xcolor}
+\usepackage{amsfonts}
+\usepackage{subfigure}
+\usepackage{array}
+\usepackage{enumerate}
+
+
+\newcommand{\Tr}{\ensuremath{\operatorname{Tr}}}
+\newcommand{\tr}{\ensuremath{\operatorname{tr}}}
+\newcommand{\Omegaqq}{\ensuremath{\Omega_{\bar{q}q}}}
+\newcommand{\vev}[1]{\ensuremath{\left\langle #1 \right\rangle}}
+\newcommand{\einh}[1]{\ensuremath{\,\text{#1}}}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+
+
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+
+
+% color def's
+
+\definecolor{blue}{rgb}{0,0,1}
+\newcommand{\colb}[1]{{\color{blue} #1}}
+\definecolor{green}{rgb}{0,1,0}
+\newcommand{\colg}[1]{{\color{green} #1}}
+\definecolor{red}{rgb}{1,0,0}
+\newcommand{\colr}[1]{{\color{red} #1}}
+\newcommand{\colJ}[1]{{\color{cyan} #1}}
+\definecolor{gray}{rgb}{.5,.5,.5}
+\newcommand{\drop}[1]{{\sout{ {\color{gray} #1}}}}
+\definecolor{darkgreen}{rgb}{.0,.5,.0}
+\newcommand{\colL}[1]{{\color{darkgreen} #1}}
+
+
+% units and refs
+\usepackage{xspace}
+\usepackage{siunitx}
+\usepackage{xfrac}
+\usepackage{hyperref}
+\usepackage[nameinlink]{cleveref}
+\usepackage{appendix}
+\usepackage{units}
+% other
+\usepackage{xifthen}
+\usepackage{xcolor}
+\hypersetup{
+	colorlinks,
+	linkcolor={red!75!black},
+	citecolor={blue!75!black},
+	urlcolor={blue!75!black}
+}
+%%%%%%%%%%%%%%% Refs %%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\Fig#1{\Cref{#1}} 
+\def\Figs#1{\Cref{#1}} 
+\def\fig#1{\Cref{#1}}
+
+\def\Tab#1{\Cref{#1}}
+\def\tab#1{\Cref{#1}}
+
+\def\Eqs#1{\Cref{#1}}
+\def\Eq#1{\Cref{#1}}
+
+\def\eq#1{\Cref{#1}}
+\def\eqref#1{\Cref{#1}}
+
+\def\sec#1{\Cref{#1}}
+\def\app#1{\hyperref[#1]{App.~\ref{#1}}}
+\def\app#1{\Cref{#1}}
+
+\renewcommand{\tableautorefname}{Tab.} 
+\renewcommand{\equationautorefname}{Eq.} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\Phibar}{\ensuremath{\bar{\Phi}}}
+\newcommand{\LPQM}{\ensuremath{\mathcal{L}_{\textrm{PQM}}}\xspace}
+
+\def\dbar{{\mathchar'26\mkern-12mu d}}
+\def\lA0{{\langle A_0 \rangle}}
+\def\bA0{{\bar{A}_0}}
+\def\lLA{{\langle L[A_0] \rangle}}
+\def\lL{{\langle L \rangle}}
+\def\lLc{{\langle L^\dagger \rangle}}
+\def\lLAc{{\langle L^\dagger[A_0] \rangle}}
+
+
+\def\dr{{D\!\llap{/}}\,}
+\def\Dr{{D\!\llap{/}}\,}
+\def\ipv{\vec{p}\llap{/}}
+\def\pslash{p\llap{/}}
+
+\def\0#1#2{\frac{#1}{#2}}
+
+\newcommand{\bsig}{\ensuremath{\bar{\sigma}}}
+\newcommand{\lsm}{L\ensuremath{\sigma}M\xspace}
+\newcommand{\pT}{\ensuremath{T_0}}
+\newcommand{\Tl}{\ensuremath{T_\chi}}
+\newcommand{\Ts}{\ensuremath{T_\chi^s}}
+\newcommand{\Tchi}{\ensuremath{T_\chi}}
+\newcommand{\Td}{\ensuremath{T_d}}
+\newcommand{\Tc}{\ensuremath{T_c}}
+\newcommand{\muc}{\ensuremath{\mu_c}}
+\newcommand{\coloronl}{(color online)\xspace}
+
+\newcommand{\mrm}[1]{\mathrm{#1}}
+\def\qbar{\bar{q}}
+\newcommand{\sx}{\sigma_{x}}
+\newcommand{\sy}{\sigma_{y}}
+
+%%%%%%%%%%%%% Hypersetup %%%%%%%%%%%%%
+
+\newcommand{\gettitle}{}
+
+\renewcommand{\figureautorefname}{Fig.}
+\renewcommand{\sectionautorefname}{Sec.}
+\renewcommand{\subsectionautorefname}{Subsec.}
+\renewcommand*{\appendixautorefname}{App.}
+%\def\appendixautorefname{App.}
+%\newcommand*{\Appendixautorefname}{appendix}
+
+%\hypersetup{
+%	colorlinks,
+%	linkcolor={blue!75!black},
+%	citecolor={blue!75!black},
+%	urlcolor={blue!75!black},
+%	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	pdftitle={\gettitle},
+%	pdfauthor={},
+%	pdfkeywords={Renormalization group} {HIC}
+%	{Correlations functions} {hyperfluctuations},
+%	bookmarksopen=true,
+%	bookmarksopenlevel=2,
+%	bookmarksnumbered=true
+%}
+
+
+%%%%%%%%%%%%%% for corrections %%%%%%%%%%%
+\newcommand{\colyy}[1]{\textcolor{red}{#1}}
+\newcommand{\colyr}[1]{\textcolor{magenta}{#1}}
+\newcommand{\colwj}[1]{\textcolor{blue}{#1}} 
+\graphicspath{{./figures/}{./}}
+
+\begin{document}
+
+	
+%$\displaystyle
+%$\partial_t\includegraphics[width=0.2\textwidth,valign=c]{Gam2-meson.pdf}=\tilde{\partial}_t\left(-\includegraphics[width=0.2\textwidth,valign=c]{pi2-quark.pdf}+\includegraphics[width=0.2\textwidth,valign=c]{pi2-meson.pdf}-\frac{1}{2}\includegraphics[width=0.11\textwidth,valign=c]{pi2-meson-tadpole.pdf}\right)$
+
+$\includegraphics[width=0.2\textwidth,valign=c]{pi2-quark.pdf}\equiv\Pi^{\phi\phi}_{\mathrm{QL}},\qquad\includegraphics[width=0.2\textwidth,valign=c]{pi2-meson.pdf}\equiv\Pi^{\phi\phi}_{\mathrm{ML}},\qquad\includegraphics[width=0.11\textwidth,valign=c]{pi2-meson-tadpole.pdf}\equiv\Pi^{\phi\phi}_{\mathrm{TP}}$
+
+
+%$
+
+%\begin{scriptsize} 
+%\begin{align}
+% \partial_\tau \parbox[c]{0.15\textwidth}{\includegraphics[width=0.15\textwidth]{figures/Gam1-sigq}}=&\frac{1}{2}\tilde\partial_\tau \parbox[c]{0.15\textwidth}{\includegraphics[width=0.15\textwidth]{figures/Gam1-sigq-sigloop}}+\parbox[c]{0.15\textwidth}{\includegraphics[width=0.15\textwidth]{figures/Gam1-sigq-piloop}}\,,\nonumber \label{}
+%\end{align}
+%\end{scriptsize} 
+
+	
+\end{document}
