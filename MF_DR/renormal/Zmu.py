@@ -22,6 +22,14 @@ mu300=Zdata[59]
 mu320=Zdata[63]
 mu380=Zdata[75]
 T=np.arange(0,300)
+
+Zdata=np.loadtxt('../Z_highT/Zall.dat')
+Zdata2=np.loadtxt('../Z_highT/Zall2.dat')
+
+ZhighTdata=np.loadtxt('../Z_highT/ZhighTdata.dat')
+#highTdata=np.loadtxt('./highTlim.dat')
+T2 = np.linspace(0, 10000, 10001)
+Thigh = np.linspace(10, 2000, 200)
 # Create figure
 fig=plt.figure(figsize=(4.5, 3.5))
 #fig=plt.figure()
@@ -36,13 +44,22 @@ ax1.scatter(T,mu320,color=[6/7,0,0],s=10,alpha=0.6,edgecolors='none',label=r'$\m
 ax1.scatter(T,mu380,color=[1,0,0],s=10,alpha=0.6,edgecolors='none',label=r'$\mu=380\,\mathrm{MeV}$')
 ax1.plot([0,300],[0.,0.],color='k',dashes=[1,1],alpha=0.2)
 
-
 ax1.axis([0,300,-0.55,1.5])
 
-ax1.set_xlabel(r'$T\,[\mathrm{MeV}]$', fontsize=14, color='black')
-ax1.set_ylabel(r'$Z^\perp_\pi(0)$', fontsize=14, color='black')
+#plt.axes([0.65, 0.62, 0.29, 0.27]) 
+#plt.plot(T2,Zdata,linewidth=2,color='k',alpha=0.7)
+#plt.plot(Thigh[100:200],ZhighTdata[100:200],dashes=[1.,0.5],linewidth=2,color='r',alpha=0.7)
+#plt.xscale('log')
+#plt.xticks(fontsize=6)
+#plt.yticks(fontsize=6)
+#plt.xlabel(r'$T\,[\mathrm{MeV}]$', fontsize=9, color='black')
+#plt.text(10, -2, r'$\mu=0$', fontsize=12, color='black')
+#plt.axis([1.,2000.,-4,1.5])
 
-ax1.legend(loc=(-0.03,0.78),fontsize=8,frameon=False,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,scatterpoints=1,ncol=3)
+ax1.set_xlabel(r'$T\,[\mathrm{MeV}]$', fontsize=14, color='black')
+ax1.set_ylabel(r'$Z^\perp_\pi(p=0)$', fontsize=14, color='black')
+
+ax1.legend(loc=(0.06,0.76),fontsize=9,frameon=False,shadow=True,handlelength=0.5,borderpad=0.5,borderaxespad=1,scatterpoints=1,ncol=3)
 
 for label in ax1.xaxis.get_ticklabels():
     label.set_fontsize(10)
