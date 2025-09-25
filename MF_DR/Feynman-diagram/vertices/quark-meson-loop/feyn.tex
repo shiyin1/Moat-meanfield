@@ -632,14 +632,14 @@
      		\fmfbottom{o2,o1}
 %		\fmfv{label=$a_1\mu_1$,l.a=-60,l.d=0.1w}{i}
 %		\fmfv{label=$a_2\mu_2$,l.a=-120,l.d=0.1w}{o}
-		\fmf{dashes,tension=3}{i1,v1}
+		\fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{i1,v1}
 		\fmf{quark}{v2,v1}
 		\fmf{quark,tension=2}{o1,v2}
 		\fmf{quark}{v1,v3}
 		\fmf{quark,tension=2}{v3,o2}
 		
 		\fmffreeze
-		\fmf{dashes}{v2,v3}
+		\fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{v2,v3}
 		
 %		\fmfv{label=$a_3',,\mu_3'$,l.a=160,l.d=0.13w}{v1}
 %		\fmfv{label=$a_1',,\mu_1'$,l.a=-140,l.d=0.1w}{v2}
@@ -651,7 +651,8 @@
 %        		\fmf{quark,fore=black,left=1,label=$(q-p)$}{v1,v2}
 %       		\fmf{quark,left=1,label=$q$}{v2,v1}
 		
-		\fmfv{decor.shape=circle,decor.filled=empty,decor.size=6thick,b=(0.5,,0.5,,0.5)}{v1,v2,v3}
+%		\fmfv{decor.shape=circle,decor.filled=empty,decor.size=6thick,b=(0.5,,0.5,,0.5)}{v1,v2,v3}
+		\fmfv{decor.shape=circle,decor.size=3thick,b=(0.5,,0.5,,0.5)}{v1,v2,v3}
 		
 %		\fmffreeze
 %              \fmfi{phantom_arrow}{vpath (__i1,__v1) shifted (thick*(-1,4))}
@@ -734,14 +735,15 @@
 
 		\fmf{quark,label.side=left,label.dist=2}{v1,i1}
 		\fmf{quark,label.side=right,label.dist=6}{i2,v1}
-		\fmf{dashes,tension=1.5,label.side=left}{v1,o2}
+		\fmf{double,foreground=(0,,0.1,,1),tension=1,width=0.8thick}{v1,o2}
 						
 %		\fmf{dashes,tension=3,label=$\longleftarrow p$,label.side=left}{i,v1}
 %		\fmf{dashes,tension=3}{v2,o}
 %        		\fmf{quark,fore=black,left=1,label=$(q-p)$}{v1,v2}
 %       		\fmf{quark,left=1,label=$q$}{v2,v1}
 		
-\fmfv{decor.shape=circle,decor.filled=empty,decor.size=10thick,b=(0.5,,0.5,,0.5)}{v1}
+%\fmfv{decor.shape=circle,decor.filled=empty,decor.size=3thick,b=(0.5,,0.5,,0.5)}{v1}
+\fmfv{decor.shape=circle,decor.size=3thick,b=(0.5,,0.5,,0.5)}{v1}
 		
 %		\fmffreeze
 %              \fmfi{phantom_arrow}{vpath (__i1,__v1) shifted (thick*(-1,4))}

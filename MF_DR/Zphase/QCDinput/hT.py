@@ -12,14 +12,16 @@ mpl.style.use('classic')
 
 # Data for plotting
 hQCD=np.loadtxt('./mub0/buffer/h.dat')
+hmodel=np.loadtxt('./hdata1.dat')
 
 # Create figure
 fig=plt.figure(figsize=(4.5, 3.5))
 #fig=plt.figure()
 ax1=fig.add_subplot(111)
 
-ax1.plot(hQCD/hQCD[0],dashes=[1,0],c='k',linewidth=1.5,label=r'fRG-QCD (2019)')
-ax1.plot([0,250],[1,1],dashes=[3,2],c='r',linewidth=1.5,label=r'Mean-field QM')
+ax1.plot(hQCD/hQCD[0],dashes=[1,0],c='#08306b',linewidth=2.5,alpha=0.8,label=r'fRG-QCD (2019)')
+ax1.plot(hmodel[0]/hmodel[0,0],dashes=[1,0],c='#a50f15',linewidth=2.5,alpha=0.8,label=r'RPA',zorder=1)
+ax1.plot([0,250],[1,1],dashes=[3,2],c='r',linewidth=2.5,alpha=0.8,label=r'Mean-field QM',zorder=0)
 
 miloc=plt.MultipleLocator(10000)
 ax1.xaxis.set_minor_locator(miloc)
@@ -58,6 +60,6 @@ for label in ax1.yaxis.get_ticklabels():
 
 
 
-fig.subplots_adjust(top=0.9, bottom=0.17, left=0.15, right=0.95, hspace=0.35,wspace=0.35)
+fig.subplots_adjust(top=0.9, bottom=0.135, left=0.15, right=0.95, hspace=0.35,wspace=0.35)
 
-fig.savefig("hqcd.pdf")
+fig.savefig("hT.pdf")
