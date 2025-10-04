@@ -23,8 +23,8 @@ ax1=fig.add_subplot(111)
 ax1.plot(hQCD/hQCD[0],dashes=[1,0],c='#08306b',linewidth=2.5,alpha=0.8,label=r'fRG-QCD (2019) $\mu=0$')
 #ax1.plot(hQCD2/hQCD2[0],dashes=[1,1],c='#08306b',linewidth=2.5,alpha=0.8,label=r'fRG-QCD (2019)')
 ax1.plot(hmodel[0]/hmodel[0,0],dashes=[1,0],c='#a50f15',linewidth=2.5,alpha=0.8,label=r'one-loop $\mu=0$',zorder=1)
-ax1.plot(hmodel[39]/hmodel[0,0],dashes=[1,0],c='#a50f15',linewidth=2.5,alpha=0.5,label=r'one-loop $\mu=200\,\mathrm{MeV}$',zorder=1)
-ax1.plot(hmodel[69]/hmodel[0,0],dashes=[1,0],c='#a50f15',linewidth=2.5,alpha=0.2,label=r'one-loop $\mu=350\,\mathrm{MeV}$',zorder=1)
+#ax1.plot(hmodel[39]/hmodel[0,0],dashes=[1,0],c='#a50f15',linewidth=2.5,alpha=0.5,label=r'one-loop $\mu=200\,\mathrm{MeV}$',zorder=1)
+#ax1.plot(hmodel[69]/hmodel[0,0],dashes=[1,0],c='#a50f15',linewidth=2.5,alpha=0.2,label=r'one-loop $\mu=350\,\mathrm{MeV}$',zorder=1)
 ax1.plot([0,250],[1,1],dashes=[3,2],c='r',linewidth=2.5,alpha=0.8,label=r'Mean-field QM',zorder=0)
 
 miloc=plt.MultipleLocator(10000)
@@ -44,7 +44,7 @@ ax1.axis([1,250,0.4,1.2])
 ax1.set_xlabel('$T\,[\mathrm{MeV}]$', fontsize=14, color='black')
 ax1.set_ylabel(r'$h(T,\mu)/h(T=0,\mu=0)$', fontsize=14, color='black')
 
-ax1.legend(loc=0,fontsize=7,frameon=True,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,numpoints=1)
+ax1.legend(loc=3,fontsize=9.5,frameon=True,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,numpoints=1)
 
 #plt.axes([0.245, 0.23, 0.29, 0.27]) 
 #plt.plot(k1,hbare1,'-',c='k',linewidth=1)
@@ -66,4 +66,4 @@ for label in ax1.yaxis.get_ticklabels():
 
 fig.subplots_adjust(top=0.9, bottom=0.135, left=0.15, right=0.95, hspace=0.35,wspace=0.35)
 
-fig.savefig("hT.pdf")
+fig.savefig("hTv2.pdf")
