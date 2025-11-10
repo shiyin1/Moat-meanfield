@@ -35,8 +35,8 @@ ax1.plot([-10,100],[0.695,0.695],'k',dashes=[2,1],linewidth=1,alpha=0.3)
 #ax1.text(221,1.2,r'$\mu=290\,\mathrm{MeV}$',fontsize=10)
 ax1.axis([0,40,0.,1.2])
 
-ax1.set_xlabel('$T\,[\mathrm{MeV}]$', fontsize=14, color='black')
-ax1.set_ylabel('$p_{\mathrm{min}}/p_{\mathrm{F}}$', fontsize=14, color='black')
+ax1.set_xlabel(r'$T\,[\mathrm{MeV}]$', fontsize=14, color='black')
+ax1.set_ylabel(r'$p_{\mathrm{min}}/p_{\mathrm{F}}$', fontsize=14, color='black')
 
 #ax1.legend(loc=0,fontsize=12,frameon=False,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,scatterpoints=1)
 
@@ -51,7 +51,7 @@ ax1.plot(mu,pminT0/pfT0,'r-',linewidth=2.5,alpha=0.6,label=r'$T=0$')
 ax1.plot([-10,1000],[0.695,0.695],'k',dashes=[2,1],linewidth=1,alpha=0.3)
 ax1.axis([301,450,0.,1.2])
 
-ax1.set_xlabel('$\mu\,[\mathrm{MeV}]$', fontsize=14, color='black')
+ax1.set_xlabel(r'$\mu\,[\mathrm{MeV}]$', fontsize=14, color='black')
 ax1.set_yticklabels([])
 ax1.legend(loc=0,fontsize=12,frameon=False,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,scatterpoints=1)
 
@@ -76,14 +76,14 @@ ax1.plot(psthermal,Ethermal[5]/10**5,'-',c='#FC9171',linewidth=2.5,alpha=0.8,lab
 ax1.plot(psthermal,Ethermal[6]/10**5,'-',c='#EE3B2A',linewidth=2.5,alpha=0.8,label=r'$\mu=422\,\mathrm{MeV}$')
 ax1.plot(psthermal,Ethermal[7]/10**5,'-',c='#A60E16',linewidth=2.5,alpha=0.8,label=r'$\mu=442\,\mathrm{MeV}$')
 
-ax1.plot([2*pfT02[0],2*pfT02[0]],[-2.9,10],dashes=[2,1],c='#073068',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[1],2*pfT02[1]],[-4.2,10],dashes=[2,1],c='#206FB6',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[2],2*pfT02[2]],[-5,10],dashes=[2,1],c='#6BADD7',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[3],2*pfT02[3]],[-5.8,10],dashes=[2,1],c='#C5DAEE',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[4],2*pfT02[4]],[-6.3,10],dashes=[2,1],c='#FDDFD0',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[5],2*pfT02[5]],[-7.2,10],dashes=[2,1],c='#FC9171',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[6],2*pfT02[6]],[-8,10],dashes=[2,1],c='#EE3B2A',linewidth=1,alpha=0.6)
-ax1.plot([2*pfT02[7],2*pfT02[7]],[-8.7,10],dashes=[2,1],c='#A60E16',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[0],2*pfT02[0]],[-10,-2.9],dashes=[2,1],c='#073068',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[1],2*pfT02[1]],[-4.2,-10],dashes=[2,1],c='#206FB6',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[2],2*pfT02[2]],[-5,-10],dashes=[2,1],c='#6BADD7',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[3],2*pfT02[3]],[-5.8,-10],dashes=[2,1],c='#C5DAEE',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[4],2*pfT02[4]],[-6.3,-10],dashes=[2,1],c='#FDDFD0',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[5],2*pfT02[5]],[-7.2,-10],dashes=[2,1],c='#FC9171',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[6],2*pfT02[6]],[-8,-10],dashes=[2,1],c='#EE3B2A',linewidth=1,alpha=0.6)
+ax1.plot([2*pfT02[7],2*pfT02[7]],[-8.7,-10],dashes=[2,1],c='#A60E16',linewidth=1,alpha=0.6)
 
 ax1.axis([0,1000,-1*10,0])
 
