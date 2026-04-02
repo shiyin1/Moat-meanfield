@@ -17,7 +17,7 @@ from matplotlib.animation import FuncAnimation
 
 # 1. 确保读取了所有 20 组数据 (修改 range 为 1, 21)
 data_list = []
-for x in range(1, 41):
+for x in range(1, 43):
     file_name = f"./spec_data_v2/rhoT{10+x*5}.dat"
     try:
         data = np.loadtxt(file_name)
@@ -40,7 +40,7 @@ def update(frame):
     
     # 数据预处理（根据你的逻辑处理每一帧数据）
     current_raw = data_list[frame]
-    threshold=15/10**7
+    threshold=10/10**7
     threshold2=-0.3/10**7
     spec_frame = np.where((current_raw > threshold) | (current_raw < threshold2), np.nan, current_raw)
     
