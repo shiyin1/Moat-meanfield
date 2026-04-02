@@ -17,7 +17,7 @@ from matplotlib.animation import FuncAnimation
 
 # 1. 确保读取了所有 20 组数据 (修改 range 为 1, 21)
 data_list = []
-for x in range(1, 43):
+for x in range(1, 46):
     file_name = f"./spec_data_v2/rhoT{10+x*5}.dat"
     try:
         data = np.loadtxt(file_name)
@@ -67,7 +67,7 @@ def update(frame):
 
 # 4. 创建动画
 # interval=200 表示每 0.2 秒切换一组数据
-ani = FuncAnimation(fig, update, frames=len(data_list), interval=300, repeat=True)
+ani = FuncAnimation(fig, update, frames=len(data_list), interval=250, repeat=True)
 
 # 5. 展示或保存
 # plt.show() # 预览
