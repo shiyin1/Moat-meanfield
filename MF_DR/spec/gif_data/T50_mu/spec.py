@@ -17,8 +17,8 @@ from matplotlib.animation import FuncAnimation
 
 # 1. 确保读取了所有 20 组数据 (修改 range 为 1, 21)
 data_list = []
-for x in range(1, 5):
-    file_name = f"./spec_data_v1/rhoT50mu{100+x*25}.dat"
+for x in range(1, 55):
+    file_name = f"./spec_data_v1/rhoT50mu{100+x*5}.dat"
     try:
         data = np.loadtxt(file_name)
         data_list.append(data)
@@ -40,7 +40,7 @@ def update(frame):
     
     # 数据预处理（根据你的逻辑处理每一帧数据）
     current_raw = data_list[frame]
-    threshold=20/10**7
+    threshold=22/10**7
     threshold2=-0.3/10**7
     spec_frame = np.where((current_raw > threshold) | (current_raw < threshold2), np.nan, current_raw)
     
@@ -61,7 +61,7 @@ def update(frame):
     ax1.set_ylim([0, 501])
     ax1.set_zlim([0, 2.5])
     ax1.view_init(elev=40, azim=235)
-    ax1.set_title(f"T = {(frame+1)*25+100} MeV") # 动态标题
+    ax1.set_title(f"$\mu$ = {(frame+1)*5+100} MeV") # 动态标题
     
     return surf,
 
