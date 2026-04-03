@@ -40,7 +40,7 @@ def update(frame):
     
     # 数据预处理（根据你的逻辑处理每一帧数据）
     current_raw = data_list[frame]
-    threshold=22/10**7
+    threshold=40/10**7
     threshold2=-0.3/10**7
     spec_frame = np.where((current_raw > threshold) | (current_raw < threshold2), np.nan, current_raw)
     

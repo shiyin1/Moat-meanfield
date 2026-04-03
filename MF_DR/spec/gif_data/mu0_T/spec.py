@@ -91,7 +91,7 @@ def update(frame):
     ax1.set_ylim([0, 501])
     ax1.set_zlim([0, 2.5])
     ax1.view_init(elev=40, azim=235)
-    ax1.set_title(f"T = {(frame+1)*5+10} MeV") # 动态标题
+    ax1.set_title(f"$\mu$= 0 T = {(frame+1)*5+10} MeV") # 动态标题
 
 
     ax2.cla()
