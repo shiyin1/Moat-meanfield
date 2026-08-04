@@ -10,7 +10,7 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    375520,       6754]
+NotebookDataLength[    375519,       6754]
 NotebookOptionsPosition[    373523,       6712]
 NotebookOutlinePosition[    374005,       6731]
 CellTagsIndexPosition[    373962,       6728]
@@ -6710,10 +6710,10 @@ vfBNYwlUf6WD0ItDa+tsSh2E5L6JmTBWQcQflDoAAJ+nYt4=
   "Out[174]=",ExpressionUUID->"0dc611ad-de68-4dec-af73-2d3d995f9f4e"]
 }, Open  ]]
 },
-WindowSize->{3008, 1639},
-WindowMargins->{{Automatic, 1512}, {0, Automatic}},
+WindowSize->{1800, 1102},
+WindowMargins->{{0, Automatic}, {Automatic, 631}},
 TaggingRules-><|"TryRealOnly" -> False|>,
-Magnification:>1.5 Inherited,
+Magnification:>1.25 Inherited,
 FrontEndVersion->"13.2 for Mac OS X x86 (64-bit) \
 (2023\:5e741\:670830\:65e5)",
 StyleDefinitions->"Default.nb",
@@ -6730,31 +6730,31 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 18771, 522, 1837, "Input",ExpressionUUID->"1aeff300-6159-459c-8510-776b0b93129b",
+Cell[558, 20, 18771, 522, 1495, "Input",ExpressionUUID->"1aeff300-6159-459c-8510-776b0b93129b",
  InitializationCell->True],
 Cell[CellGroupData[{
-Cell[19354, 546, 287, 6, 174, "Input",ExpressionUUID->"a2a64c53-f6ab-4bd3-8392-a407fbfa3ffd"],
-Cell[19644, 554, 174, 2, 52, "Output",ExpressionUUID->"fcd9df5b-54e2-49d0-b1e1-4927bc7fcc77"]
+Cell[19354, 546, 287, 6, 144, "Input",ExpressionUUID->"a2a64c53-f6ab-4bd3-8392-a407fbfa3ffd"],
+Cell[19644, 554, 174, 2, 42, "Output",ExpressionUUID->"fcd9df5b-54e2-49d0-b1e1-4927bc7fcc77"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19855, 561, 464, 10, 120, "Input",ExpressionUUID->"cf50df5e-0a56-4cce-9c6c-2fab729015f1"],
-Cell[20322, 573, 334654, 5713, 368, "Output",ExpressionUUID->"e2446880-07dd-4701-ad8f-14d97fbe3dcb"]
+Cell[19855, 561, 464, 10, 99, "Input",ExpressionUUID->"cf50df5e-0a56-4cce-9c6c-2fab729015f1"],
+Cell[20322, 573, 334654, 5713, 307, "Output",ExpressionUUID->"e2446880-07dd-4701-ad8f-14d97fbe3dcb"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[355013, 6291, 771, 21, 163, "Input",ExpressionUUID->"87486179-0912-49f6-a2d8-7e12ba7690aa"],
-Cell[355787, 6314, 593, 9, 52, "Output",ExpressionUUID->"11b92a4d-9251-4984-90c9-87e32a3b82a9"],
-Cell[356383, 6325, 593, 9, 52, "Output",ExpressionUUID->"2752b2ac-bc2c-461a-832c-786a7bdf0f7a"],
-Cell[356979, 6336, 610, 9, 52, "Output",ExpressionUUID->"b2069b26-df4a-40c2-b31e-1fd39642dbab"]
+Cell[355013, 6291, 771, 21, 135, "Input",ExpressionUUID->"87486179-0912-49f6-a2d8-7e12ba7690aa"],
+Cell[355787, 6314, 593, 9, 42, "Output",ExpressionUUID->"11b92a4d-9251-4984-90c9-87e32a3b82a9"],
+Cell[356383, 6325, 593, 9, 42, "Output",ExpressionUUID->"2752b2ac-bc2c-461a-832c-786a7bdf0f7a"],
+Cell[356979, 6336, 610, 9, 42, "Output",ExpressionUUID->"b2069b26-df4a-40c2-b31e-1fd39642dbab"]
 }, Open  ]],
-Cell[357604, 6348, 5088, 82, 92, "Input",ExpressionUUID->"ef4c1016-ea1d-491e-bc4b-be63e8d81f5b"],
+Cell[357604, 6348, 5088, 82, 78, "Input",ExpressionUUID->"ef4c1016-ea1d-491e-bc4b-be63e8d81f5b"],
 Cell[CellGroupData[{
-Cell[362717, 6434, 636, 12, 66, "Input",ExpressionUUID->"6d793916-34f3-4f75-a736-f0c751312abe"],
-Cell[363356, 6448, 5173, 122, 349, "Output",ExpressionUUID->"e7d4708f-d831-4669-aa74-0245a3b0fb03"]
+Cell[362717, 6434, 636, 12, 54, "Input",ExpressionUUID->"6d793916-34f3-4f75-a736-f0c751312abe"],
+Cell[363356, 6448, 5173, 122, 291, "Output",ExpressionUUID->"e7d4708f-d831-4669-aa74-0245a3b0fb03"]
 }, Open  ]],
-Cell[368544, 6573, 376, 8, 66, "Input",ExpressionUUID->"0f6054dc-42e1-42b9-9aa6-0fb05cedfd9b"],
+Cell[368544, 6573, 376, 8, 54, "Input",ExpressionUUID->"0f6054dc-42e1-42b9-9aa6-0fb05cedfd9b"],
 Cell[CellGroupData[{
-Cell[368945, 6585, 834, 25, 130, "Input",ExpressionUUID->"3902f85f-a7c3-e74f-9989-0ca8b837f8d5"],
-Cell[369782, 6612, 3725, 97, 356, "Output",ExpressionUUID->"0dc611ad-de68-4dec-af73-2d3d995f9f4e"]
+Cell[368945, 6585, 834, 25, 107, "Input",ExpressionUUID->"3902f85f-a7c3-e74f-9989-0ca8b837f8d5"],
+Cell[369782, 6612, 3725, 97, 297, "Output",ExpressionUUID->"0dc611ad-de68-4dec-af73-2d3d995f9f4e"]
 }, Open  ]]
 }
 ]
