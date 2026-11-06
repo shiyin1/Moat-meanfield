@@ -30,7 +30,7 @@ xnew, ynew = np.meshgrid(mu, ps[0:50])
 vnorm = mpl.colors.Normalize(vmin=135**2/10**4, vmax=500**2/10**4)
 plt.rcParams['font.size'] = 7
 im=ax1.plot_surface(xnew, ynew, Re[0:50]/10**4, rstride=1, cstride=1, cmap="rainbow",alpha=1.,edgecolor=(0,0,0,0.1), antialiased=True,linewidth=0.2,norm=vnorm) 
-ax1.set_ylabel(r'$\mathbf{p}\,[\mathrm{MeV}]$', fontsize=13, color='black')
+ax1.set_ylabel(r'$|\mathbf{p}|\,[\mathrm{MeV}]$', fontsize=13, color='black')
 ax1.set_xlabel(r'$\mu\,[\mathrm{MeV}]$', fontsize=13, color='black')
 ax1.zaxis.set_rotate_label(False)
 ax1.set_zlabel(r'$\Sigma_{\pi}(\mathbf{p,\mu})\,[\mathrm{MeV}^2\times10^4]$', fontsize=13, color='black', rotation=90)

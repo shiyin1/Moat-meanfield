@@ -34,23 +34,23 @@ mfT10mu400_moat=np.loadtxt('./Sigma_moat/T10mu400/mf.dat')
 
 ps=np.arange(1, 2000, 10)
 
-EqT10mu5_norm=  (ZsT10mu5_norm/Z0T10mu5_norm*ps**2+mfT10mu5_norm/Z0T10mu5_norm)
-EqT10mu5_moat=  (ZsT10mu5_moat/Z0T10mu5_moat*ps**2+mfT10mu5_moat/Z0T10mu5_moat)
-EqT10mu400_norm=(ZsT10mu400_norm/Z0T10mu400_norm*ps**2+mfT10mu400_norm/Z0T10mu400_norm)
-EqT10mu400_moat=(ZsT10mu400_moat/Z0T10mu400_moat*ps**2+mfT10mu400_moat/Z0T10mu400_moat)
+EqT10mu5_norm=  ((ZsT10mu5_norm/Z0T10mu5_norm)**2*ps**2+(mfT10mu5_norm/Z0T10mu5_norm)**2)
+EqT10mu5_moat=  ((ZsT10mu5_moat/Z0T10mu5_moat)**2*ps**2+(mfT10mu5_moat/Z0T10mu5_moat)**2)
+EqT10mu400_norm=((ZsT10mu400_norm/Z0T10mu400_norm)**2*ps**2+(mfT10mu400_norm/Z0T10mu400_norm)**2)
+EqT10mu400_moat=((ZsT10mu400_moat/Z0T10mu400_moat)**2*ps**2+(mfT10mu400_moat/Z0T10mu400_moat)**2)
 # Create figure
 fig=plt.figure(figsize=(4.5, 3.5))
 #fig=plt.figure()
 ax1=fig.add_subplot(111)
 ax1.plot(ps, EqT10mu5_norm/EqT10mu5_norm[0]/10000,color='#7fb2d3',linewidth=3.,alpha=1,label=r'$T=10\,\mathrm{MeV}\,\,\mu=5\,\mathrm{MeV}\,\,E_\pi=\sqrt{q^2+m^2_{\pi,\mathrm{RPA}}}$') 
-ax1.plot(ps, EqT10mu5_moat/EqT10mu5_moat[0]/10000,color='#fc7f71',linewidth=2.5,dashes=(2.5,1.),alpha=1,label=r'$T=10\,\mathrm{MeV}\,\,\mu=5\,\mathrm{MeV}\,\,E_\pi=\sqrt{Z^{\perp}_{\pi}q^2+m^2_{\pi,\mathrm{RPA}}}$') 
+ax1.plot(ps, EqT10mu5_moat/EqT10mu5_moat[0]/10000,color='#fc7f71',linewidth=2.5,dashes=(2.5,1.),alpha=1,label=r'$T=10\,\mathrm{MeV}\,\,\mu=5\,\mathrm{MeV}\,\,E_\pi=\sqrt{\Sigma_\pi}$') 
 ax1.plot(ps, EqT10mu400_norm/EqT10mu400_norm[0]/10000,color='#8dd3c9',linewidth=3.,alpha=1,label=r'$T=10\,\mathrm{MeV}\,\,\mu=400\,\mathrm{MeV}\,\,E_\pi=\sqrt{q^2+m^2_{\pi,\mathrm{RPA}}}$') 
-ax1.plot(ps, EqT10mu400_moat/EqT10mu400_moat[0]/10000,color='#ffb55f',linewidth=3.,dashes=(2.5,1.),alpha=1,label=r'$T=10\,\mathrm{MeV}\,\,\mu=400\,\mathrm{MeV}\,\,E_\pi=\sqrt{Z^{\perp}_{\pi}q^2+m^2_{\pi,\mathrm{RPA}}}$') 
+ax1.plot(ps, EqT10mu400_moat/EqT10mu400_moat[0]/10000,color='#ffb55f',linewidth=3.,dashes=(2.5,1.),alpha=1,label=r'$T=10\,\mathrm{MeV}\,\,\mu=400\,\mathrm{MeV}\,\,E_\pi=\sqrt{\Sigma_\pi}$') 
 
 ax1.set_ylabel(r'$\Sigma_q(\mathbf{p}^2)/\Sigma_q(0)\,[\times\,10^4]$', fontsize=13, color='black')
 ax1.set_xlabel(r'$\mathbf{p}\,[\mathrm{MeV}]$', fontsize=13, color='black')
 ax1.legend(loc=0,fontsize='7',frameon=True,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,numpoints=1,scatterpoints=1)
-ax1.axis([0,1000,0,4.2])
+ax1.axis([0,1000,-0.05,0.2])
 #ax1.set_yticks([0.94,0.96,0.98,1.00,1.02],[r'0.94',r'0.96',r'0.98',r'1.00',r'1.02'])
 
 for label in ax1.xaxis.get_ticklabels():

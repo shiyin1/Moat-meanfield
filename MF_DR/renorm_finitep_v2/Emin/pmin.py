@@ -30,13 +30,13 @@ psthermal=np.loadtxt('./ps_thermal.dat')
 fig=plt.figure(figsize=(4.5, 3.5))
 #fig=plt.figure()
 ax1=fig.add_subplot(121)
-ax1.plot(T,pmin/pf,'b-',linewidth=2.5,alpha=0.6,label=r'$\mu=320\,\mathrm{MeV}$')
-ax1.plot([-10,100],[0.695,0.695],'k',dashes=[2,1],linewidth=1,alpha=0.3)
+ax1.plot(T,pmin/(2*pf),'b-',linewidth=2.5,alpha=0.6,label=r'$\mu=320\,\mathrm{MeV}$')
+ax1.plot([-10,100],[0.695/2,0.695/2],'k',dashes=[2,1],linewidth=1,alpha=0.3)
 #ax1.text(221,1.2,r'$\mu=290\,\mathrm{MeV}$',fontsize=10)
-ax1.axis([0,40,0.,1.2])
+ax1.axis([0,40,0.,0.6])
 
 ax1.set_xlabel(r'$T\,[\mathrm{MeV}]$', fontsize=14, color='black')
-ax1.set_ylabel(r'$p_{\mathrm{min}}/p_{\mathrm{F}}$', fontsize=14, color='black')
+ax1.set_ylabel(r'$p_{\mathrm{min}}/(2\,p_{\mathrm{F}})$', fontsize=14, color='black')
 
 #ax1.legend(loc=0,fontsize=12,frameon=False,shadow=True,handlelength=3.,borderpad=0.5,borderaxespad=1,scatterpoints=1)
 
@@ -46,10 +46,10 @@ for label in ax1.yaxis.get_ticklabels():
     label.set_fontsize(10)
 
 ax1=fig.add_subplot(122)
-ax1.plot(mu,pminT0/pfT0-10,'b-',linewidth=2.5,alpha=0.6,label=r'$\mu=320\,\mathrm{MeV}$')
-ax1.plot(mu,pminT0/pfT0,'r-',linewidth=2.5,alpha=0.6,label=r'$T=0$')
-ax1.plot([-10,1000],[0.695,0.695],'k',dashes=[2,1],linewidth=1,alpha=0.3)
-ax1.axis([301,450,0.,1.2])
+ax1.plot(mu,pminT0/(2*pfT0)-10,'b-',linewidth=2.5,alpha=0.6,label=r'$\mu=320\,\mathrm{MeV}$')
+ax1.plot(mu,pminT0/(2*pfT0),'r-',linewidth=2.5,alpha=0.6,label=r'$T=0$')
+ax1.plot([-10,1000],[0.695/2,0.695/2],'k',dashes=[2,1],linewidth=1,alpha=0.3)
+ax1.axis([301,450,0.,0.6])
 
 ax1.set_xlabel(r'$\mu\,[\mathrm{MeV}]$', fontsize=14, color='black')
 ax1.set_yticklabels([])
